@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <meta charset="UTF-8">
+    <title>Wishlist</title>
+</head>
+<body>
+<div align="center">
+		<div align="center" class="border">
+			<div class="header">
+				<h3 class="word">Wishlist</h3>
+			</div>
+<div class="row justify-content-center">
+<table class="table table-striped w-auto">
+         <thead align="center">
+            <td>Name</td>
+            <td>Cost</td>
+         <td>Available</td>
+         <td>Add to Cart</td>
+         </thead>
+
+         {% for item in items %}
+            <tr class="table-info">
+                <td>{{item['bookname']}}</td>
+                <td>{{item['cost']}}</td>
+                <td>{{item['available']}}</td>
+                <td align="center"><a  href="movetocart/{{item['iid']}}">Add</a></td>
+            </tr>
+         {% endfor %}
+      </table>
+</div></div></div>
+</body>
+</html>
+{% endblock %}

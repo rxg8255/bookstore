@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <meta charset="UTF-8">
+    <title>Sales</title>
+</head>
+<body>
+<div align="center">
+		<div align="center" class="border">
+			<div class="header">
+				<h3 class="word">Sales</h3>
+			</div>
+<div class="row justify-content-center">
+<table class="table table-striped w-auto">
+         <thead align="center">
+            <td>OrderId</td>
+            <td>SaleDate</td>
+            <td>BookName</td>
+            <td>Genre</td>
+            <td>Cost</td>
+            <td>Sold Qty</td>
+            <td>Sale Amount</td>
+         </thead>
+
+         {% for sale in sales %}
+            <tr class="table-info">
+                <td>{{sale['orderid']}}</td>
+                <td>{{sale['saledate']}}</td>
+                <td>{{sale['bookname']}}</td>
+                <td>{{sale['genre']}}</td>
+                <td>{{sale['cost']}}</td>
+                <td>{{sale['qty']}}</td>
+                <td>{{sale['total']}}</td>
+            </tr>
+         {% endfor %}
+      </table>
+</div></div></div>
+</body>
+</html>
+{% endblock %}

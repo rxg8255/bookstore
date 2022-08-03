@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+<div align="center">
+		<div align="center" class="border">
+			<div class="header">
+				<h3 class="word">Books</h3>
+			</div>
+            <div class="container">
+<div class="row justify-content-center">
+    <div class="col-sm-8">
+    <form class="form-group">
+        <select class="form-control" name="genre" id="genre" onchange="myFunction()">
+            <option value="">----</option>
+                      <option value="All">All</option>
+                      <option value="Comic">Comic</option>
+                      <option value="Drama">Drama</option>
+                      <option value="Horror">Horror</option>
+                      <option value="Mystery">Mystery</option>
+                      <option value="Philosophy">Philosophy</option>
+                      <option value="Romance">Romance</option>
+                      <option value="Sci-Fi">Sci-Fi</option>
+                      <option value="Suspense">Suspense</option>
+        </select></br></br>
+            </form>
+    </div>
+<table class="table table-striped w-auto">
+         <thead align="center">
+            <td>Id</td>
+            <td>Name</td>
+            <td>Cost</td>
+         <td>Available</td>
+         <td>WishList</td>
+         <td>Cart</td>
+         </thead>
+
+         {% for book in books %}
+            <tr class="table-info">
+                <td>{{book['id']}}</td>
+                <td>{{book['bookname']}}</td>
+                <td>{{book['cost']}}</td>
+                <td>{{book['available']}}</td>
+                <td>
+                    <input id="{{book['id']}}" type="button" value="{{book['wishlist']}}" onclick="wishlist(this);">
+                <td>
+                 <input id="{{book['id']}}" type="button" value="{{book['cart']}}" onclick="cart(this);">
+            </td>
+            </tr>
+         {% endfor %}
+      </table>
+    </div>
+</div></div></div>
+</body>
+<script type="text/javascript">
+function wishlist(button){
+  button.value = button.value == 'NO' ? 'YES' : 'NO';
+  window.location.href = "/wishlist/"+button.id;
+}
+function cart(button){
+  button.value = button.value == 'NO' ? 'YES' : 'NO';
+  window.location.href = "/cart/"+button.id;
+}
+function myFunction() {
+  var x = document.getElementById("genre").value;
+  window.location.href = "/inventory/"+x;
+}
+</script>
+</html>
+{% endblock %}

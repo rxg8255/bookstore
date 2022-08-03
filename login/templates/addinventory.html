@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<html>
+	<head>
+		<title>Add Inventory</title>
+		<link rel="stylesheet" href="/static/css/bootstrap.css">
+	</head>
+	<body>
+		<div align="center">
+		<div align="center" class="border">
+			<div class="header">
+				<h3 class="word">Add Inventory</h3>
+			</div></br></br></br>
+
+				<form class="col-lg-6 offset-lg-3 " action="{{ url_for('addinventory') }}" method="post">
+					<div class="row justify-content-center">
+				<div class="msg">{{ msg }}</div>
+					<input class="form-control" id="bookname" name="bookname" type="text" placeholder="Book Name" class="textbox"/></br></br>
+
+                  <select class="form-control" name="genre" id="genre">
+                      <option value="Comic">Comic</option>
+						<option value="Drama">Drama</option>
+                      <option value="Horror">Horror</option>
+                      <option value="Mystery">Mystery</option>
+                      <option value="Philosophy">Philosophy</option>
+                      <option value="Romance">Romance</option>
+                      <option value="Sci-Fi">Sci-Fi</option>
+                      <option value="Suspense">Suspense</option>
+					</select></br></br>
+
+					<input class="form-control" id="available" name="available" type="number" placeholder="Quantity" class="textbox"/></br></br>
+                  <input class="form-control" id="cost" name="cost" type="number" placeholder="Cost" class="textbox"/></br></br>
+					<input type="submit" class="btn btn-primary" value="Add Book"></br>
+					</div>
+				</form>
+
+		</div>
+		</div>
+	</body>
+</html>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+<div align="center">
+		<div align="center" class="border">
+			<div class="header">
+				<h3 class="word">Cart</h3>
+			</div>
+<div class="row justify-content-center">
+<table class="table table-striped w-auto">
+         <thead align="center">
+            <td>Name</td>
+            <td>Cost</td>
+         <td>Available</td>
+         <td>Quantity</td>
+         <td>Total</td>
+         </thead>
+
+         {% for item in items %}
+            <tr class="table-info">
+                <td>{{item['bookname']}}</td>
+                <td>{{item['cost']}}</td>
+                <td>{{item['available']}}</td>
+                <td style="width: 90px;"><input style="width: 90px;" id="{{item['bookid']}}" type="number" min="1" max="{{item['available']}}" value="{{item['qty']}}" onchange="calTotal(this)"></td>
+                <td style="width: 90px;"><input style="width: 90px;" type="number" disabled value="{{item['total']}}"></td>
+            </tr>
+         {% endfor %}
+         <tr><td>Sub Total</td><td></td><td></td><td></td><td>{{netprice}}</td></tr>
+      </table>
+    </br></br></br></br>
+    </div>
+            <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+    <input class="btn btn-primary" type="submit" value="Buy" onclick="order()">
+        </div>
+</div>
+</body>
+<script>
+    function calTotal(qty){
+    window.location.href = "/caltotal/"+qty.value+"/"+qty.id;
+    }
+    function order(){
+    window.location.href = "/order";
+    }
+</script>
+</html>
+{% endblock %}

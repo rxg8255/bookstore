@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+<div align="center">
+		<div align="center" class="border">
+			<div class="header">
+				<h3 class="word">Orders</h3>
+			</div>
+<div class="row justify-content-center">
+<table class="table table-striped w-auto">
+         <thead align="center">
+            <td>OrderId</td>
+            <td>SaleDate</td>
+            <td>Username</td>
+            <td>Email</td>
+            <td>Bill Amount</td>
+            <td>Order details</td>
+         </thead>
+
+         {% for order in orders %}
+            <tr class="table-info">
+                <td>{{order['id']}}</td>
+                <td>{{order['saledate']}}</td>
+                <td>{{order['userid']}}</td>
+                <td>{{order['email']}}</td>
+                <td>{{order['billamount']}}</td>
+                <td><a href="/billdetails/{{order['id']}}">More Details</a></td>
+
+            </tr>
+         {% endfor %}
+      </table>
+</div>
+</body>
+</html>
+{% endblock %}
